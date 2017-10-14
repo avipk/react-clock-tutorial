@@ -6,12 +6,10 @@ import './css/index.css';
 import registerServiceWorker from './registerServiceWorker';
 
 
-setInterval( ()=> {
-  ReactDOM.render(<Clock time={new Date()}/>, 
-  document.getElementById('root'));
-},1000);
-
-
+ReactDOM.render(
+	<Clock time={new Date(0,0,0,12,34,56)}/>, 
+	document.getElementById('root')
+);
 
 
 registerServiceWorker();
