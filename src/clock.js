@@ -1,8 +1,11 @@
 import React from 'react';
+import PropTypes from 'prop-types';
+
 import ClockDigit from './clock-digit';
 import AnalogHand from './analog-hand';
+import WaterClock from './water-clock';
 
-class Clock extends React.Component { 
+class Clock extends React.Component {  
 
   constructor(props) {
     super(props);
@@ -11,6 +14,11 @@ class Clock extends React.Component {
     };
   }
   
+  getChildContext() {
+    const {time} = this.state;
+    return {time};
+  }
+
   componentWillMount() {
     setInterval( ()=>{
       this.setState({
@@ -21,13 +29,15 @@ class Clock extends React.Component {
   
   render() {       
     return (
-      <div className="clock clock--analog">
-        <AnalogHand value={this.state.time.getHours()} sections={12} width="30%"/>
-        <AnalogHand value={this.state.time.getMinutes()} sections={60} width="35%"/>
-        <AnalogHand value={this.state.time.getSeconds()} sections={60} width="40%" color="#ff6565"/>
+      <div className="clock">
+        {this.props.children}
       </div>
     );
   }  
 }
+
+Clock.childContextTypes = {
+    time: PropTypes.instanceOf(Date)
+};
 
 export default Clock;

@@ -75,3 +75,66 @@
   right: 0;
   position: absolute;
 }
+
+/*
+  Water clock
+*/ 
+.clock-water {
+  box-sizing: border-box;
+  color: #40a4df;
+  display: inline-block;
+  font-size: 22px;
+  font-weight: 700;
+  width: 3em;
+  height: 4em;
+  border: 2px solid #000;
+  border-top: none;
+  border-bottom-left-radius: 0.5em;
+  border-bottom-right-radius: 0.5em;
+  line-height: 4em;
+  margin-right: 10px;
+  overflow: hidden;
+  position: relative;
+  text-align: center;
+  z-index: 3;
+}
+.clock-water .water {
+  display: block;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  background-color: currentcolor;
+  transition: height .5s ease-out;
+  z-index: 2;
+}
+.clock-water .val {
+  mix-blend-mode: difference;
+  position: relative;
+  z-index: 2;
+}
+.clock-water:after {
+  content: '\1f4a7';
+  display: block;
+  line-height: 1em;
+  left: 32%;
+  position: absolute;
+  z-index: 1;
+}
+.clock-water.drop:after {
+  animation-name: droplet;
+  animation-duration: 1s;
+  animation-iteration-count: infinite;
+}
+
+@keyframes droplet {
+  0% {
+    top: -10%;
+  }
+  20% {
+    top: -7%;
+  }
+  90% {
+    top: 100%;
+  }
+}
