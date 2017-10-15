@@ -4,6 +4,10 @@
   font-weight: 400;
   src: url(https://fonts.gstatic.com/s/orbitron/v8/HmnHiRzvcnQr8CjBje6GQvesZW2xOQ-xsNqO47m55DA.woff2) format("woff2");
 }
+
+/*
+  Digital clock
+*/
 .clock {
   margin: auto;
   padding: 6px;
@@ -23,4 +27,51 @@
 }
 .clock-digit:last-child:after {
   content: '';
+}
+
+/*
+  Analog Clock 
+*/
+.clock--analog {
+  color: #12C312;
+  background-color: #222;
+  display: inline-block;
+  position: relative;
+  height: 200px;
+  width: 200px;
+  border-radius: 50%;
+  border: 2px solid #ff6565;
+}
+.clock--analog:before {
+  border-radius: 50%;
+  background-color: #fff;
+  box-shadow: 0 0 7px #222 inset;
+  content: '';
+  display: block;
+  width: 20px;
+  height: 20px;
+  position: absolute;
+  transform: translate(-50%, -50%);
+  top: 50%;
+  left: 50%;
+  z-index: 1;
+}
+
+.clock-hand {
+  height: 5px;
+  position: absolute;
+  transform-origin: left center;
+  transform: translateY(-50%);
+  top: 50%;
+  left: 50%;
+  border-bottom-right-radius: 30%;
+  border-top-right-radius: 30%;
+}
+.clock-hand:after {
+  color: #fff;
+  content: attr(data-value);
+  display: block;
+  bottom: 3px;
+  right: 0;
+  position: absolute;
 }
