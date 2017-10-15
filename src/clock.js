@@ -1,4 +1,5 @@
 import React from 'react';
+import ClockDigit from './clock-digit';
 
 class Clock extends React.Component { 
 
@@ -17,17 +18,13 @@ class Clock extends React.Component {
     }, 1000);
   }
   
-  render() {
-    const s_time = [ 
-      this.state.time.getHours(), 
-      this.state.time.getMinutes(), 
-      this.state.time.getSeconds()
-    ]
-    .map(t=>`${t}`.padStart(2, '0')) // Padding time vals with zeros
-    .join(':'); // Join time with ':'
-    
+  render() {       
     return (
-      <div className="clock clock--digital">{s_time}</div>
+      <div className="clock">
+        <ClockDigit value={this.state.time.getHours()}/>
+        <ClockDigit value={this.state.time.getMinutes()}/>
+        <ClockDigit value={this.state.time.getSeconds()}/>
+      </div>
     );
   }  
 }

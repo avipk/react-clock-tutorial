@@ -10,10 +10,17 @@
   display: block;
 }
 
-.clock--digital {
-  color: #12C312;
+
+.clock-digit {
   background-color: #222;
+  color: #12C312;  
   display: inline-block;
   font-size: 30px;
   font-family: Orbitron;
+}
+.clock-digit:after {
+  content: ':';
+}
+.clock-digit:last-child:after {
+  content: '';
 }
